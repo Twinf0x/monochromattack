@@ -11,6 +11,16 @@ public class TurretController : MonoBehaviour
 
     private float currentAngle = 0;
 
+    private void Start()
+    {
+        ColorController.instance.AddSprite(GetComponent<SpriteRenderer>());
+    }
+
+    private void OnDestroy() 
+    {
+        ColorController.instance.RemoveSprite(GetComponent<SpriteRenderer>());
+    }
+
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.gameObject.tag == "Player")
@@ -28,6 +38,7 @@ public class TurretController : MonoBehaviour
 
     private IEnumerator Aim(float duration = 1f)
     {
+        ColorController.instance.NextColor();
         float timer = 0;
 
         Vector3 mousePosition = Vector3.zero;

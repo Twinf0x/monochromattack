@@ -7,10 +7,10 @@ public class Projectile : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject turretPrefab;
     public float spawnThreshold = 0.3f;
-    public float minTurretToPlayerDistance = 10;
-    public float maxTurretToPlayerDistance = 14;
+    public float minTurretToPlayerDistance = 10f;
+    public float maxTurretToPlayerDistance = 14f;
     private Rigidbody2D body;
-    private float currentAngle = 0;
+    private float currentAngle = 0f;
     
     private void Start()
     {
