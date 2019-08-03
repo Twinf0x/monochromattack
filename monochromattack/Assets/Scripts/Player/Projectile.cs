@@ -51,18 +51,13 @@ public class Projectile : MonoBehaviour
     {
         var distance = Mathf.Lerp(minTurretToPlayerDistance, maxTurretToPlayerDistance, Random.Range(0, 1));
 
-        var spawnPoint = GetRandomPointInArena();
+        var spawnPoint = EnemyController.instance.GetRandomPointInArena();
 
         while((transform.position - spawnPoint).sqrMagnitude < distance * distance)
         {
-            spawnPoint = GetRandomPointInArena();
+            spawnPoint = EnemyController.instance.GetRandomPointInArena();
         }
 
         Instantiate(turretPrefab, spawnPoint, Quaternion.identity);
-    }
-
-    private Vector3 GetRandomPointInArena()
-    {
-        return new Vector3(Random.Range(-8.5f, 8.5f),Random.Range(-6.5f, 6.5f), 0f);
     }
 }

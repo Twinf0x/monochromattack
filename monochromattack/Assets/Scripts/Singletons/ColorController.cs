@@ -66,7 +66,7 @@ public class ColorController : MonoBehaviour
     {
         if(currentColor == GameColor.White)
         {
-            //Start Game
+            EnemyController.instance.StartFight();
         }
 
         currentColor = (GameColor) (((int)currentColor + 1) % 6);
@@ -85,6 +85,6 @@ public class ColorController : MonoBehaviour
             sprite.color = colorDictionary[currentColor];
         }
 
-        //Send current color to enemy controller
+        EnemyController.instance.ChangeColors(currentColor);
     }
 }
