@@ -34,6 +34,13 @@ public class Destructable : MonoBehaviour
         //Spawn corpses and stuff
         onDeath();
 
-        Destroy(this.gameObject);
+        if(GetComponent<IsPooledObject>() != null)
+        {
+            gameObject.SetActive(false);
+        }  
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

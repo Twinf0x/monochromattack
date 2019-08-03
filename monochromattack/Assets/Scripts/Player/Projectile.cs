@@ -60,4 +60,22 @@ public class Projectile : MonoBehaviour
 
         Instantiate(turretPrefab, spawnPoint, Quaternion.identity);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Enemy")
+        {
+            var destructable = other.gameObject.GetComponent<Destructable>();
+            if(destructable != null && !destructable.IsIndestructable)
+            {
+                destructable.Die();
+            }
+
+            var enemyProjectile = other.gameObject.GetComponent<EnemyBullet>();
+            if(enemyProjectile != null)
+            {
+                enemyProjectile.DestroySelf();
+            }
+        }
+    }
 }

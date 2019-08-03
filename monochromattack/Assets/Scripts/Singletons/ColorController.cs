@@ -64,13 +64,15 @@ public class ColorController : MonoBehaviour
 
     public void NextColor()
     {
-        if(currentColor == GameColor.White)
-        {
-            EnemyController.instance.StartFight();
-        }
+        var previousColor = currentColor;
 
         currentColor = (GameColor) (((int)currentColor + 1) % 6);
         ApplyColor();
+
+        if(previousColor == GameColor.White)
+        {
+            EnemyController.instance.StartFight();
+        }
     }
 
     private void ChangeColor(SpriteRenderer sprite)
@@ -85,6 +87,6 @@ public class ColorController : MonoBehaviour
             sprite.color = colorDictionary[currentColor];
         }
 
-        EnemyController.instance.ChangeColors(currentColor);
+        EnemyController.instance.ChangeColors();
     }
 }

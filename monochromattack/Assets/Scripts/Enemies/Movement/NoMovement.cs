@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NoMovement : MonoBehaviour, Movement
 {
-    public float duration = 0.5f;
+    public float duration = 2f;
 
     public IEnumerator Move(Action callback)
     {

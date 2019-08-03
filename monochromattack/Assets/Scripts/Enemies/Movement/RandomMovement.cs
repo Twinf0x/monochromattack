@@ -17,8 +17,7 @@ public class RandomMovement : MonoBehaviour, Movement
 
     public IEnumerator Move(Action callback)
     {
-        var direction = UnityEngine.Random.onUnitSphere;
-        direction.z = 0;
+        var direction = EnemyController.instance.GetRandomPointInArena() - transform.position;
         direction = direction.normalized;
 
         body.velocity = direction * speed;

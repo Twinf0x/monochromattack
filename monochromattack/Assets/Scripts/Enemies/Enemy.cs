@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
         }
 
         isBusy = true;
-        if(Random.Range(0, 1) > abilityProbability)
+        if(Random.Range(0f, 1f) > abilityProbability)
         {
             StartCoroutine(movement.Move(() => isBusy = false));
         }
