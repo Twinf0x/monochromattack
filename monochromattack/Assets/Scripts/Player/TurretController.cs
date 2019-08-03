@@ -41,7 +41,7 @@ public class TurretController : MonoBehaviour
             yield return null;
         }
 
-        Fire(mousePosition);
+        StartCoroutine(Fire(mousePosition));
     }
 
     private void RotateTurret(Vector3 targetPosition)
@@ -58,10 +58,19 @@ public class TurretController : MonoBehaviour
         currentAngle = degreeAngle;
     }
 
-    private void Fire(Vector3 targetPosition)
+    private IEnumerator Fire(Vector3 targetPosition)
     {
         TimeController.instance.EndAimSlowMotion();
 
+        SpawnProjectile(targetPosition);
+
+        yield return new WaitForSeconds(0.5f);
+
+        Destroy(gameObject);
+    }
+
+    private void SpawnProjectile(Vector3 targetPosition)
+    {
         var xDiff = targetPosition.x - firePoint.position.x;
         var yDiff = targetPosition.y - firePoint.position.y;
         var direction = new Vector2(xDiff, yDiff);

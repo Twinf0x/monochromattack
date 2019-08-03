@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8708097997336959306}
   - component: {fileID: 4410300260439113783}
   - component: {fileID: 1727030075885623552}
+  - component: {fileID: 3909785659722431915}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -91,7 +92,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1015993843211223052}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: bdf2e5a324c478641bfa6a8ed7b328a7, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -111,11 +112,30 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &3909785659722431915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015993843211223052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391a95e9db924df4ba5e7b84f73f44a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 1884433906842480073, guid: 168ad2f17ec7a18469440fc31f109a23,
+    type: 3}
+  turretPrefab: {fileID: 7180906447322546569, guid: 2ace7abf60f01024a9c61e19cc4be9cf,
+    type: 3}
+  spawnThreshold: 0.3
+  minTurretToPlayerDistance: 10
+  maxTurretToPlayerDistance: 14
