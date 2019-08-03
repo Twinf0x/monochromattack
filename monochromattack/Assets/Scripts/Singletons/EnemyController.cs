@@ -62,7 +62,10 @@ public class EnemyController : MonoBehaviour
             spawnPoint = GetRandomPointInArena();
         }
 
-        Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
+        var enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
+        currentEnemies.Add(enemy);
+        var destructable = enemy.GetComponent<Destructable>();
+        destructable.onDeath += () => currentEnemies.Remove(enemy);
     }
 
     public Vector3 GetRandomPointInArena()

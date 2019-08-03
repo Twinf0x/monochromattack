@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float abilityProbability = 0.5f;
+    private Movement movement;
+    private Ability ability;
+    private bool isBusy = false;
+
+    private void OnEnable() 
     {
-        
+        Initialize();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Initialize()
     {
-        
+        movement = GetComponent<Movement>();
+        ability = GetComponent<Ability>();
+        //Set scoring stuff
+    }
+
+    private void Update()
+    {
+        if(isBusy)
+        {
+            return;
+        }
+
+        isBusy = true;
+        if(Random.Range(0, 1) > abilityProbability)
+        {
+            StartCoroutine(movement.Move(() => isBusy = false));
+        }
+        else
+        {
+            StartCoroutine(ability.Execute(() => isBusy = false));
+        }
     }
 }

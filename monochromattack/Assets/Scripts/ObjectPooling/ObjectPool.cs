@@ -42,6 +42,7 @@ public class ObjectPool : MonoBehaviour
     private GameObject CreateObject()
     {
         var obj = Instantiate(prefab, this.transform);
+        obj.AddComponent<IsPooledObject>();
         obj.SetActive(false);
         pooledObjects.Add(obj);
 
