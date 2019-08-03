@@ -71,9 +71,8 @@ public class TurretController : MonoBehaviour
 
     private IEnumerator Fire(Vector3 targetPosition)
     {
-        TimeController.instance.EndAimSlowMotion();
-
         SpawnProjectile(targetPosition);
+        TimeController.instance.EndAimSlowMotion();
 
         yield return new WaitForSeconds(0.5f);
 
@@ -88,6 +87,6 @@ public class TurretController : MonoBehaviour
 
         var projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         var projectileBody = projectile.GetComponent<Rigidbody2D>();
-        projectileBody.velocity = direction * projectileSpeed;
+        projectileBody.velocity = direction.normalized * projectileSpeed;
     }
 }

@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     private Movement movement;
     private Ability ability;
     private bool isBusy = false;
+    private Coroutine currentAction;
 
     private void OnEnable() 
     {
@@ -16,9 +17,11 @@ public class Enemy : MonoBehaviour
 
     private void Initialize()
     {
+        isBusy = false;
         movement = GetComponent<Movement>();
         ability = GetComponent<Ability>();
-        //Set scoring stuff
+        var destructable = GetComponent<Destructable>();
+        destructable.onDeath += () => { if(currentAction != null) { StopCoroutine(currentAction); } };
     }
 
     private void Update()

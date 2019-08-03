@@ -110,7 +110,7 @@ public class EnemyController : MonoBehaviour
     #region Color
     public void ChangeColors()
     {
-        var allEnemyObjects = Physics2D.OverlapAreaAll(new Vector2(-8.5f, -6.5f), new Vector2(8.5f, 6.5f), LayerMask.GetMask("Enemy", "EnemyProjectile"));
+        var allEnemyObjects = Physics2D.OverlapAreaAll(new Vector2(-9.5f, -7.5f), new Vector2(9.5f, 10f), LayerMask.GetMask("Enemy", "EnemyProjectile"));
         foreach(var enemyObject in allEnemyObjects)
         {
             var enemy = enemyObject.gameObject.GetComponent<Enemy>();
@@ -120,18 +120,14 @@ public class EnemyController : MonoBehaviour
                 continue;
             }
 
-            var bullet = enemyObject.gameObject.GetComponent<EnemyBullet>();
-            if(bullet != null)
+            var destructable = enemyObject.gameObject.GetComponent<Destructable>();
+            if(destructable != null)
             {
-                var destructable = enemyObject.gameObject.GetComponent<Destructable>();
-                if(destructable != null)
-                {
-                    destructable.Die();
-                }
-                else
-                {
-                    Debug.Log("Bullet didnt have a destructable");
-                }
+                destructable.Die();
+            }
+            else
+            {
+                Debug.Log("Bullet didnt have a destructable");
             }
         }
     }
