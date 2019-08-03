@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 797535021
+    locked: 0
+  - name: Units
+    uniqueID: 965621331
+    locked: 0
+  - name: Effects
+    uniqueID: 2860120867
+    locked: 0
