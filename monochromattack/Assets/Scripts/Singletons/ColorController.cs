@@ -19,6 +19,7 @@ public class ColorController : MonoBehaviour
     public List<ColorPair> colors;
     public List<SpriteRenderer> controlledSprites;
     public List<Tilemap> controlledTilemaps;
+    public GameObject instructions;
 
     private GameColor currentColor = GameColor.White;
     private Dictionary<GameColor, Color> colorDictionary;
@@ -76,6 +77,7 @@ public class ColorController : MonoBehaviour
             EnemyController.instance.StartFight();
             AudioManager.instance.Stop("Doom");
             AudioManager.instance.Play("Fight");
+            instructions.SetActive(false);
         }
     }
 

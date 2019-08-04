@@ -70,6 +70,7 @@ public class DropAttack : MonoBehaviour, Ability
 
         transform.position = targetPosition;
         killer.isActive = true;
+        AudioManager.instance.Play("EnemyHitsWall");
         CreateShockWave(targetPosition);
 
         timer = 0f;
