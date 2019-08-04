@@ -20,6 +20,7 @@ public class BulletController : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         destructable = GetComponent<Destructable>();
+        destructable.onDeath += () => this.GameOver();
         ColorController.instance.AddSprite(sprite);
         afterImage.enabled = false;
     }
@@ -117,5 +118,12 @@ public class BulletController : MonoBehaviour
         destructable.IsIndestructable = false;
         afterImage.enabled = false;
         isDashing = false;
+    }
+
+    private void GameOver()
+    {
+        AudioManager.instance.Stop("Fight");
+        AudioManager.instance.Play("Doom");
+        AudioManager.instance.Play("Scratch");
     }
 }
