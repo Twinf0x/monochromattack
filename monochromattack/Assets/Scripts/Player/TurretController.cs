@@ -10,6 +10,7 @@ public class TurretController : MonoBehaviour
     public Transform firePoint;
     public SpriteRenderer turretSprite;
     public SpriteRenderer arrowSprite;
+    [SerializeField] private GameObject activationParticlePrefab;
 
     private float currentAngle = 0;
 
@@ -38,6 +39,7 @@ public class TurretController : MonoBehaviour
     {
         TimeController.instance.StartAimSlowMotion();
         AudioManager.instance.Play("TurretWindUp");
+        Instantiate(activationParticlePrefab, transform.position, Quaternion.identity);
         arrowSprite.gameObject.SetActive(true);
         Destroy(playerObject);
         StartCoroutine(Aim());

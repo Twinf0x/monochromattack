@@ -164,6 +164,8 @@ MonoBehaviour:
   firePoint: {fileID: 7903244906955244521}
   turretSprite: {fileID: 1416640587521184217}
   arrowSprite: {fileID: 5118101779229962831}
+  activationParticlePrefab: {fileID: 5125101730345642467, guid: dcc0961c0c9a19242b69f7be8756b48c,
+    type: 3}
 --- !u!58 &7180906447322546564
 CircleCollider2D:
   m_ObjectHideFlags: 0

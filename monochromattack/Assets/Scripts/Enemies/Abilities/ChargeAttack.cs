@@ -18,6 +18,7 @@ public class ChargeAttack : MonoBehaviour, Ability
     private bool isCharging = false;
     private Vector3 playerDirection;
     private Rigidbody2D body;
+    [SerializeField] private GameObject wallHitParticlePrefab;
 
     public IEnumerator Execute(Action callback)
     {
@@ -74,6 +75,7 @@ public class ChargeAttack : MonoBehaviour, Ability
         isCharging = false;
         enemy.SetAnimatorBool("isCharging", false);
         AudioManager.instance.Play("EnemyHitsWall");
+        Instantiate(wallHitParticlePrefab, transform.position, Quaternion.identity);
         body.velocity = Vector2.zero;
         Instantiate(shockWavePrefab, transform.position + (playerDirection * 0.5f), Quaternion.identity);
         StartCoroutine(CoolDown());

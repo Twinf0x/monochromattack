@@ -9,6 +9,7 @@ public class PinballMovement : MonoBehaviour, Movement
     public Enemy enemy;
     private Vector2 direction;
     private Rigidbody2D body;
+    [SerializeField] private GameObject wallHitParticlePrefab;
 
     public IEnumerator Move(Action callback)
     {
@@ -33,6 +34,8 @@ public class PinballMovement : MonoBehaviour, Movement
         }
 
         AudioManager.instance.Play("EnemyHitsWall");
+
+        Instantiate(wallHitParticlePrefab, transform.position, Quaternion.identity);
 
         bool isCollidingTop = Physics2D.OverlapCircleAll((Vector3.up) + transform.position, 0.4f, LayerMask.GetMask("Wall")).Length > 0;
         bool isCollidingBottom = Physics2D.OverlapCircleAll((Vector3.down) + transform.position, 0.4f, LayerMask.GetMask("Wall")).Length > 0;
