@@ -8,17 +8,22 @@ public class TurretController : MonoBehaviour
     public float projectileSpeed = 20;
     public Transform weapon;
     public Transform firePoint;
+    public SpriteRenderer turretSprite;
+    public SpriteRenderer arrowSprite;
 
     private float currentAngle = 0;
 
     private void Start()
     {
-        ColorController.instance.AddSprite(GetComponent<SpriteRenderer>());
+        ColorController.instance.AddSprite(turretSprite);
+        ColorController.instance.AddSprite(arrowSprite);
+        arrowSprite.gameObject.SetActive(false);
     }
 
     private void OnDestroy() 
     {
-        ColorController.instance.RemoveSprite(GetComponent<SpriteRenderer>());
+        ColorController.instance.RemoveSprite(turretSprite);
+        ColorController.instance.RemoveSprite(arrowSprite);
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
@@ -32,6 +37,7 @@ public class TurretController : MonoBehaviour
     private void Activate(GameObject playerObject)
     {
         TimeController.instance.StartAimSlowMotion();
+        arrowSprite.gameObject.SetActive(true);
         Destroy(playerObject);
         StartCoroutine(Aim());
     }
@@ -63,7 +69,7 @@ public class TurretController : MonoBehaviour
         float degreeAngle = (180 / Mathf.PI) * radialAngle * -1;
 
         //as weapon is facing to the left by default, subtract 90
-        degreeAngle -= 90;
+        //degreeAngle -= 90;
 
         weapon.RotateAround(transform.position, new Vector3(0, 0, 1), degreeAngle - currentAngle);
         currentAngle = degreeAngle;

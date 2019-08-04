@@ -16,6 +16,7 @@ public class SpriteAfterImage : MonoBehaviour {
     private float distanceTraveledSinceLastSpawn; // the distance this object has moved since the last object was shown
     private Vector3 lastSpawnPosition;            // the position the last object was spawned
     private Color initialColor;
+    private List<GameObject> allObjects = new List<GameObject>();        
 
     private void Awake() {
         // get the sprite renderer on this object
@@ -27,6 +28,7 @@ public class SpriteAfterImage : MonoBehaviour {
         for (int i = 0; i < spawnOnStart; i++) {
             readyObjects.Add(makeSpriteObject());
         }
+        allObjects = new List<GameObject>();
     }
 
     private void OnEnable() {
@@ -43,6 +45,7 @@ public class SpriteAfterImage : MonoBehaviour {
         spriteObject.transform.localPosition = Vector3.zero;
         // hide it
         spriteObject.SetActive(false);
+        allObjects.Add(spriteObject);
         return spriteObject.GetComponent<SpriteRenderer>();
     }
 
@@ -127,5 +130,13 @@ public class SpriteAfterImage : MonoBehaviour {
         sprite.transform.localPosition = Vector3.zero;
         // add it to the ready list
         readyObjects.Add(sprite);
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var obj in allObjects)
+        {
+            Destroy(obj);
+        }
     }
 }

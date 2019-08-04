@@ -26,7 +26,7 @@ public class BulletController : MonoBehaviour
 
     private void OnDestroy() 
     {
-        ColorController.instance.RemoveSprite(GetComponent<SpriteRenderer>());
+        ColorController.instance.RemoveSprite(sprite);
     }
 
     private void Update()
