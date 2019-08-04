@@ -45,17 +45,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colors:
   - gameColor: 0
-    color: {r: 1, g: 0, b: 0, a: 1}
+    color: {r: 0.9686275, g: 0.40784317, b: 0.40784317, a: 1}
   - gameColor: 1
-    color: {r: 1, g: 0.8630775, b: 0, a: 1}
+    color: {r: 1, g: 1, b: 0.40000004, a: 1}
   - gameColor: 2
-    color: {r: 0, g: 0, b: 1, a: 1}
+    color: {r: 0.5019608, g: 0.7568628, b: 1, a: 1}
   - gameColor: 3
-    color: {r: 1, g: 0.40851706, b: 0, a: 1}
+    color: {r: 0.9686275, g: 0.5921569, b: 0.21960786, a: 1}
   - gameColor: 4
-    color: {r: 0, g: 1, b: 0, a: 1}
+    color: {r: 0.40784317, g: 0.9686275, b: 0.40784317, a: 1}
   - gameColor: 5
-    color: {r: 0.6334119, g: 0, b: 1, a: 1}
+    color: {r: 0.6901961, g: 0.40784317, b: 0.9686275, a: 1}
   - gameColor: -1
     color: {r: 1, g: 1, b: 1, a: 1}
   controlledSprites: []
+  controlledTilemaps: []
