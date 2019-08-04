@@ -54,6 +54,7 @@ public class ChargeAttack : MonoBehaviour, Ability
 
         indicator.gameObject.SetActive(false);
         isCharging = true;
+        enemy.SetAnimatorBool("isCharging", true);
 
         body = GetComponent<Rigidbody2D>();
         while(isCharging)
@@ -71,6 +72,7 @@ public class ChargeAttack : MonoBehaviour, Ability
         }
 
         isCharging = false;
+        enemy.SetAnimatorBool("isCharging", false);
         body.velocity = Vector2.zero;
         Instantiate(shockWavePrefab, transform.position + (playerDirection * 0.5f), Quaternion.identity);
         StartCoroutine(CoolDown());

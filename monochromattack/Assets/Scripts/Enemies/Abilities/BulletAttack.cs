@@ -34,6 +34,8 @@ public class BulletAttack : MonoBehaviour, Ability
 
         RotateFirePoint(playerDirection);
 
+        enemy.SetAnimatorTrigger("Attack");
+
         var degreesPerStep = bulletSpread / bulletAmount;
         var offset = bulletSpread / 2;
 

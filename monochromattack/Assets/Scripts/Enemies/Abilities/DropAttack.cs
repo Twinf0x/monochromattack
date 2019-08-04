@@ -8,6 +8,7 @@ public class DropAttack : MonoBehaviour, Ability
     public float dropTime = 0.5f;
     public float linearSpeed = 3f;
     public float arcHeight = 5f;
+    public float coolDown = 0.33f;
     public AnimationCurve arc;
     public GameObject shockWavePrefab;
     public Transform dropShadow;
@@ -36,6 +37,7 @@ public class DropAttack : MonoBehaviour, Ability
 
         var flyTime = Vector3.Distance(startPosition, targetPosition) / linearSpeed;
         var timer = 0f;
+        enemy.SetAnimatorTrigger("Attack");
         
         while(timer <= flyTime)
         {
@@ -52,6 +54,7 @@ public class DropAttack : MonoBehaviour, Ability
 
         timer = 0f;
         var dropPosition = transform.position;
+        enemy.SetAnimatorTrigger("Land");
 
         while(timer < dropTime)
         {
@@ -68,6 +71,13 @@ public class DropAttack : MonoBehaviour, Ability
         transform.position = targetPosition;
         killer.isActive = true;
         CreateShockWave(targetPosition);
+
+        timer = 0f;
+        while(timer < coolDown)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
 
         callback.Invoke();
     }

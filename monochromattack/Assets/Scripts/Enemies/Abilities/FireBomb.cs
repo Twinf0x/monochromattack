@@ -30,6 +30,7 @@ public class FireBomb : MonoBehaviour, Ability
             targetPosition = EnemyController.instance.GetRandomPointInArena();
         }
         enemy.FaceTargetPosition(targetPosition);
+        enemy.SetAnimatorTrigger("Attack");
 
         var flyTime = Vector3.Distance(startPosition, targetPosition) / bulletSpeed;
         var timer = 0f;

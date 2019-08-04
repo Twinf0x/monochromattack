@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bdb36bbeb123be4794d3b4f754116ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropTime: 0.5
+  dropTime: 0.25
   linearSpeed: 5
   arcHeight: 3
   arc:
