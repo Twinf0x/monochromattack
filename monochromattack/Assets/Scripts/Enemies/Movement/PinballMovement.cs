@@ -32,10 +32,12 @@ public class PinballMovement : MonoBehaviour, Movement
             return;
         }
 
-        bool isCollidingTop = Physics2D.OverlapCircleAll((Vector3.up) + transform.position, 0.25f, LayerMask.GetMask("Wall")).Length > 0;
-        bool isCollidingBottom = Physics2D.OverlapCircleAll((Vector3.down) + transform.position, 0.25f, LayerMask.GetMask("Wall")).Length > 0;
-        bool isCollidingLeft = Physics2D.OverlapCircleAll((Vector3.left) + transform.position, 0.25f, LayerMask.GetMask("Wall")).Length > 0;
-        bool isCollidingRight = Physics2D.OverlapCircleAll((Vector3.right) + transform.position, 0.25f, LayerMask.GetMask("Wall")).Length > 0;
+        AudioManager.instance.Play("EnemyHitsWall");
+
+        bool isCollidingTop = Physics2D.OverlapCircleAll((Vector3.up) + transform.position, 0.4f, LayerMask.GetMask("Wall")).Length > 0;
+        bool isCollidingBottom = Physics2D.OverlapCircleAll((Vector3.down) + transform.position, 0.4f, LayerMask.GetMask("Wall")).Length > 0;
+        bool isCollidingLeft = Physics2D.OverlapCircleAll((Vector3.left) + transform.position, 0.4f, LayerMask.GetMask("Wall")).Length > 0;
+        bool isCollidingRight = Physics2D.OverlapCircleAll((Vector3.right) + transform.position, 0.4f, LayerMask.GetMask("Wall")).Length > 0;
         float rotationFactor = 0f;
         
         if(isCollidingTop)

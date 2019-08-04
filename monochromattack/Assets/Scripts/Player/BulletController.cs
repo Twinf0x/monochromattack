@@ -20,6 +20,7 @@ public class BulletController : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         destructable = GetComponent<Destructable>();
+        destructable.onDeath += () => this.GameOver();
         ColorController.instance.AddSprite(sprite);
         afterImage.enabled = false;
     }
@@ -61,10 +62,12 @@ public class BulletController : MonoBehaviour
         if(direction == Vector2.zero)
         {
             animator.SetBool("isWalking", false);
+            AudioManager.instance.Stop("PlayerWalk");
         }
         else
         {
             animator.SetBool("isWalking", true);
+            AudioManager.instance.Play("PlayerWalk");
         }
 
         if(direction.x > 0 && !isFacingRight)
@@ -94,6 +97,7 @@ public class BulletController : MonoBehaviour
     private IEnumerator PerformDash(Vector2 direction, float duration = 0.5f)
     {
         isDashing = true;
+        AudioManager.instance.Play("PlayerDash");
         afterImage.enabled = true;
         float timer = 0;
 
@@ -117,5 +121,14 @@ public class BulletController : MonoBehaviour
         destructable.IsIndestructable = false;
         afterImage.enabled = false;
         isDashing = false;
+    }
+
+    private void GameOver()
+    {
+        TimeController.instance.SetGameOver();
+        AudioManager.instance.Stop("Fight");
+        AudioManager.instance.Play("Chill");
+        AudioManager.instance.Play("Scratch");
+
     }
 }

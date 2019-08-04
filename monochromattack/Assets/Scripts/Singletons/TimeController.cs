@@ -45,4 +45,10 @@ public class TimeController : MonoBehaviour
         timeModifiers.Remove(AimSlowMotionFactor);
         UpdateTimeScale();
     }
+
+    public void SetGameOver()
+    {
+        timeModifiers.Add(0);
+        UpdateTimeScale();
+    }
 }

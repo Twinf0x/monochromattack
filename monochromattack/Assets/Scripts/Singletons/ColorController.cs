@@ -74,6 +74,8 @@ public class ColorController : MonoBehaviour
         if(previousColor == GameColor.White)
         {
             EnemyController.instance.StartFight();
+            AudioManager.instance.Stop("Doom");
+            AudioManager.instance.Play("Fight");
         }
     }
 
