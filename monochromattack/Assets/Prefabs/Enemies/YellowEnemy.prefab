@@ -142,6 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   enemy: {fileID: 3795103072478504708}
+  wallHitParticlePrefab: {fileID: 3292313353738227176, guid: 062f429fd4041ff43aa5c44098169d1d,
+    type: 3}
 --- !u!1001 &1140878495434813901
 PrefabInstance:
   m_ObjectHideFlags: 0
