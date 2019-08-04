@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour
     public float maxTurretToPlayerDistance = 14f;
     private Rigidbody2D body;
     private float currentAngle = 0f;
+    [SerializeField] private List<GameObject> killExplosionPrefabs;
     
     private void Start()
     {
@@ -68,6 +69,9 @@ public class Projectile : MonoBehaviour
             var destructable = other.gameObject.GetComponent<Destructable>();
             if(destructable != null && !destructable.IsIndestructable)
             {
+                foreach (GameObject prefab in killExplosionPrefabs) {
+                    Instantiate(prefab, other.transform.position, Quaternion.identity);
+                }
                 destructable.Die();
                 HighscoreController.instance.IncreaseScore();
             }
