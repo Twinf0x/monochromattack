@@ -45,8 +45,8 @@ GameObject:
   - component: {fileID: 3858984695273982241}
   - component: {fileID: 2344115123685431869}
   - component: {fileID: 1507528876579730345}
-  - component: {fileID: 6597419863455384045}
   - component: {fileID: -4003071571888647327}
+  - component: {fileID: 6480245421699004126}
   m_Layer: 9
   m_Name: YellowEnemy
   m_TagString: Enemy
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4335ad2cb4f4347adef69a87e2bd1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityProbability: 0.5
+  abilityProbability: 0
 --- !u!114 &-8035661837201521720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,19 +192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91748e6f9a81f4045b15d94762775ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6597419863455384045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4864030535163007419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d82de21e9393704891450fd751256c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 2
 --- !u!114 &-4003071571888647327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,3 +204,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72003c35e5086a84291c6a256ed52f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 1
+--- !u!114 &6480245421699004126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864030535163007419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75db1066510818241b57dc385f59b1d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
