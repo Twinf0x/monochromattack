@@ -11,12 +11,14 @@ public class BulletController : MonoBehaviour
     public SpriteRenderer sprite;
     public Animator animator;
     public SpriteAfterImage afterImage;
+    public GameObject dashRefillParticlePrefab;
     private Vector2 direction;
     private bool isDashing = false;
     private Rigidbody2D body;
     private Destructable destructable;
     private bool isFacingRight = true;
     private float timeSinceLastDash;
+    private bool canDash = true;
 
     private void Start()
     {
@@ -41,14 +43,23 @@ public class BulletController : MonoBehaviour
         }
 
         direction = GetMovementDirection();
-        if(Input.GetKeyDown(KeyCode.Space) && timeSinceLastDash >= dashCoolDown)
+        if(Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             Dash(direction);
         }
         else
         {
             Move(direction);
-            timeSinceLastDash += Time.deltaTime;
+            if(!canDash)
+            {
+                timeSinceLastDash += Time.deltaTime;
+                if(timeSinceLastDash >= dashCoolDown)
+                {
+                    canDash = true;
+                    AudioManager.instance.Play("DashReady");
+                    Instantiate(dashRefillParticlePrefab, transform.position, Quaternion.identity);
+                }
+            }
         }
     }
 
@@ -96,6 +107,7 @@ public class BulletController : MonoBehaviour
     private void Dash(Vector2 direction)
     {
         timeSinceLastDash = 0f;
+        canDash = false;
         StartCoroutine(PerformDash(direction));
     }
 

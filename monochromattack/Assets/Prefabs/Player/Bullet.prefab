@@ -87,9 +87,12 @@ MonoBehaviour:
   movementSpeed: 5
   dashSpeed: 30
   dashDrag: 7
+  dashCoolDown: 1
   sprite: {fileID: 2282716405860670053}
   animator: {fileID: 2282716405860670052}
   afterImage: {fileID: 2500398613548924022}
+  dashRefillParticlePrefab: {fileID: 5125101730345642467, guid: dcc0961c0c9a19242b69f7be8756b48c,
+    type: 3}
 --- !u!114 &1884433906842480083
 MonoBehaviour:
   m_ObjectHideFlags: 0
