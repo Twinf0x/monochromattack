@@ -14,6 +14,16 @@ public class Destructable : MonoBehaviour
 
     public Action onDeath = delegate { };
 
+    private void OnEnable() 
+    {
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        onDeath = delegate { };
+    }
+
     public void Die()
     {
         if(isIndestructable)
@@ -24,6 +34,13 @@ public class Destructable : MonoBehaviour
         //Spawn corpses and stuff
         onDeath();
 
-        Destroy(this.gameObject);
+        if(GetComponent<IsPooledObject>() != null)
+        {
+            gameObject.SetActive(false);
+        }  
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

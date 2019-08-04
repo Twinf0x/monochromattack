@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3678416124750079989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3713060502150515842}
+  - component: {fileID: 8481782704433805986}
+  m_Layer: 0
+  m_Name: ObjectPoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3713060502150515842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3678416124750079989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8481782704433805986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3678416124750079989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61162092c249a3340983ee89670efb1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - name: Volcano
+    gameColor: 0
+    shouldExpand: 1
+    initialCount: 10
+    prefab: {fileID: 4864030535163007419, guid: 1c6e787af7307fc428c7ebe8c2195678,
+      type: 3}
+  - name: Pinball
+    gameColor: 1
+    shouldExpand: 1
+    initialCount: 10
+    prefab: {fileID: 4864030535163007419, guid: 85e58132d08806c4c97a6e669e2fbe7f,
+      type: 3}
+  - name: Camo
+    gameColor: 2
+    shouldExpand: 1
+    initialCount: 10
+    prefab: {fileID: 4864030535163007419, guid: f032a05200a10804980ec6f36736d4b8,
+      type: 3}
+  - name: Charger
+    gameColor: 3
+    shouldExpand: 1
+    initialCount: 10
+    prefab: {fileID: 4864030535163007419, guid: 606fb8a01481aa64bb406dcea27567ce,
+      type: 3}
+  - name: Heavy
+    gameColor: 4
+    shouldExpand: 1
+    initialCount: 10
+    prefab: {fileID: 4864030535163007419, guid: 20c2c1c5ae5dcc740ab6ab7a59b36950,
+      type: 3}
+  - name: Gunner
+    gameColor: 5
+    shouldExpand: 1
+    initialCount: 10
+    prefab: {fileID: 4864030535163007419, guid: b9e357c369665934ba68f60c0a9c8d3a,
+      type: 3}
+  enemyProjectiles:
+  - name: PurpleBullet
+    gameColor: 5
+    shouldExpand: 1
+    initialCount: 30
+    prefab: {fileID: 5686970275138704061, guid: 36d5ddacdca2e6249a3daf2872f6b388,
+      type: 3}
+  - name: FireBomb
+    gameColor: 0
+    shouldExpand: 1
+    initialCount: 10
+    prefab: {fileID: 5686970275138704061, guid: 30baecb19fbca5845a4d1e1eb4f222c5,
+      type: 3}

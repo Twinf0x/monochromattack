@@ -16,6 +16,12 @@ public class BulletController : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         destructable = GetComponent<Destructable>();
+        ColorController.instance.AddSprite(GetComponent<SpriteRenderer>());
+    }
+
+    private void OnDestroy() 
+    {
+        ColorController.instance.RemoveSprite(GetComponent<SpriteRenderer>());
     }
 
     private void Update()

@@ -7,10 +7,10 @@ public class Projectile : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject turretPrefab;
     public float spawnThreshold = 0.3f;
-    public float minTurretToPlayerDistance = 10;
-    public float maxTurretToPlayerDistance = 14;
+    public float minTurretToPlayerDistance = 10f;
+    public float maxTurretToPlayerDistance = 14f;
     private Rigidbody2D body;
-    private float currentAngle = 0;
+    private float currentAngle = 0f;
     
     private void Start()
     {
@@ -51,18 +51,31 @@ public class Projectile : MonoBehaviour
     {
         var distance = Mathf.Lerp(minTurretToPlayerDistance, maxTurretToPlayerDistance, Random.Range(0, 1));
 
-        var spawnPoint = GetRandomPointInArena();
+        var spawnPoint = EnemyController.instance.GetRandomPointInArena();
 
         while((transform.position - spawnPoint).sqrMagnitude < distance * distance)
         {
-            spawnPoint = GetRandomPointInArena();
+            spawnPoint = EnemyController.instance.GetRandomPointInArena();
         }
 
         Instantiate(turretPrefab, spawnPoint, Quaternion.identity);
     }
 
-    private Vector3 GetRandomPointInArena()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        return new Vector3(Random.Range(-8.5f, 8.5f),Random.Range(-6.5f, 6.5f), 0f);
+        if(other.gameObject.tag == "Enemy")
+        {
+            var destructable = other.gameObject.GetComponent<Destructable>();
+            if(destructable != null && !destructable.IsIndestructable)
+            {
+                destructable.Die();
+            }
+
+            var enemyProjectile = other.gameObject.GetComponent<EnemyBullet>();
+            if(enemyProjectile != null)
+            {
+                enemyProjectile.DestroySelf();
+            }
+        }
     }
 }
