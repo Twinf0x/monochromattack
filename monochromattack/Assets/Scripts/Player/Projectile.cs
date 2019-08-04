@@ -69,6 +69,7 @@ public class Projectile : MonoBehaviour
             if(destructable != null && !destructable.IsIndestructable)
             {
                 destructable.Die();
+                HighscoreController.instance.IncreaseScore();
             }
 
             var enemyProjectile = other.gameObject.GetComponent<EnemyBullet>();

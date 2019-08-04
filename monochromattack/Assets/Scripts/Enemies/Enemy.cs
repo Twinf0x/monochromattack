@@ -24,7 +24,13 @@ public class Enemy : MonoBehaviour
         movement = GetComponent<Movement>();
         ability = GetComponent<Ability>();
         var destructable = GetComponent<Destructable>();
-        destructable.onDeath += () => { if(currentAction != null) { StopCoroutine(currentAction); } AudioManager.instance.Play("EnemyDies"); };
+        destructable.onDeath += () => { 
+            if(currentAction != null) 
+            { 
+                StopCoroutine(currentAction); 
+            } 
+            AudioManager.instance.Play("EnemyDies"); 
+        };
     }
 
     private void Update()

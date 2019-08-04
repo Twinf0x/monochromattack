@@ -78,6 +78,7 @@ public class ColorController : MonoBehaviour
             AudioManager.instance.Stop("Doom");
             AudioManager.instance.Play("Fight");
             instructions.SetActive(false);
+            HighscoreController.instance.StartScoring();
         }
     }
 
