@@ -7,16 +7,21 @@ public class BulletController : MonoBehaviour
     public float movementSpeed = 5;
     public float dashSpeed = 30;
     public float dashDrag = 7;
+    public SpriteRenderer sprite;
+    public Animator animator;
+    public SpriteAfterImage afterImage;
     private Vector2 direction;
     private bool isDashing = false;
     private Rigidbody2D body;
     private Destructable destructable;
+    private bool isFacingRight = true;
 
     private void Start()
     {
         body = GetComponent<Rigidbody2D>();
         destructable = GetComponent<Destructable>();
-        ColorController.instance.AddSprite(GetComponent<SpriteRenderer>());
+        ColorController.instance.AddSprite(sprite);
+        afterImage.enabled = false;
     }
 
     private void OnDestroy() 
@@ -53,6 +58,32 @@ public class BulletController : MonoBehaviour
     private void Move(Vector2 direction)
     {
         body.velocity = direction * movementSpeed;
+        if(direction == Vector2.zero)
+        {
+            animator.SetBool("isWalking", false);
+        }
+        else
+        {
+            animator.SetBool("isWalking", true);
+        }
+
+        if(direction.x > 0 && !isFacingRight)
+        {
+            Flip();
+        }
+
+        if(direction.x < 0 && isFacingRight)
+        {
+            Flip();
+        }
+    }
+
+    private void Flip()
+    {
+        var temp = sprite.gameObject.transform.localScale;
+        temp.x *= -1;
+        sprite.gameObject.transform.localScale = temp;
+        isFacingRight = !isFacingRight;
     }
 
     private void Dash(Vector2 direction)
@@ -63,6 +94,7 @@ public class BulletController : MonoBehaviour
     private IEnumerator PerformDash(Vector2 direction, float duration = 0.5f)
     {
         isDashing = true;
+        afterImage.enabled = true;
         float timer = 0;
 
         body.velocity = direction * dashSpeed;
@@ -83,7 +115,7 @@ public class BulletController : MonoBehaviour
         }
 
         destructable.IsIndestructable = false;
-
+        afterImage.enabled = false;
         isDashing = false;
     }
 }

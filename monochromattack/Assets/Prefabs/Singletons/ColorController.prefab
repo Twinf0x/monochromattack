@@ -58,8 +58,4 @@ MonoBehaviour:
     color: {r: 0.6334119, g: 0, b: 1, a: 1}
   - gameColor: -1
     color: {r: 1, g: 1, b: 1, a: 1}
-  controlledSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  controlledSprites: []

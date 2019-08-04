@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public enum GameColor { White = -1, Red, Yellow, Blue, Orange, Green, Purple }
 
@@ -17,6 +18,7 @@ public class ColorController : MonoBehaviour
 
     public List<ColorPair> colors;
     public List<SpriteRenderer> controlledSprites;
+    public List<Tilemap> controlledTilemaps;
 
     private GameColor currentColor = GameColor.White;
     private Dictionary<GameColor, Color> colorDictionary;
@@ -85,6 +87,11 @@ public class ColorController : MonoBehaviour
         foreach(var sprite in controlledSprites)
         {
             sprite.color = colorDictionary[currentColor];
+        }
+
+        foreach(var tilemap in controlledTilemaps)
+        {
+            tilemap.color = colorDictionary[currentColor];
         }
 
         EnemyController.instance.ChangeColors();
