@@ -122,8 +122,10 @@ public class BulletController : MonoBehaviour
 
     private void GameOver()
     {
+        TimeController.instance.SetGameOver();
         AudioManager.instance.Stop("Fight");
-        AudioManager.instance.Play("Doom");
+        AudioManager.instance.Play("Chill");
         AudioManager.instance.Play("Scratch");
+
     }
 }

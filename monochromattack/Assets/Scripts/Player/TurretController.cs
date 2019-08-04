@@ -37,6 +37,7 @@ public class TurretController : MonoBehaviour
     private void Activate(GameObject playerObject)
     {
         TimeController.instance.StartAimSlowMotion();
+        AudioManager.instance.Play("TurretWindUp");
         arrowSprite.gameObject.SetActive(true);
         Destroy(playerObject);
         StartCoroutine(Aim());
@@ -77,6 +78,7 @@ public class TurretController : MonoBehaviour
 
     private IEnumerator Fire(Vector3 targetPosition)
     {
+        AudioManager.instance.Play("TurretFire");
         SpawnProjectile(targetPosition);
         TimeController.instance.EndAimSlowMotion();
 

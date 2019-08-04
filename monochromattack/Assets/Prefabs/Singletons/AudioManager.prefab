@@ -46,13 +46,13 @@ MonoBehaviour:
   sounds:
   - name: Fight
     clip: {fileID: 8300000, guid: dbafc4f54d8dc8149af175053c440c92, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: Doom
     clip: {fileID: 8300000, guid: 2199eea2c7ff3954db89f763dcd80287, type: 3}
-    volume: 0.75
+    volume: 0.5
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -60,5 +60,23 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 75aa7e4013c47b54794536653206f8b8, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Chill
+    clip: {fileID: 8300000, guid: aeacd7567bd81cd458002d10131c023f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: TurretFire
+    clip: {fileID: 8300000, guid: 6b84559094adc11439b44980ede42832, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TurretWindUp
+    clip: {fileID: 8300000, guid: 20253d1f82639494692fab56e07e5b84, type: 3}
+    volume: 0.5
+    pitch: 1.33
     loop: 0
     source: {fileID: 0}
