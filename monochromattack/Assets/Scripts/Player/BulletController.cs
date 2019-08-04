@@ -62,10 +62,12 @@ public class BulletController : MonoBehaviour
         if(direction == Vector2.zero)
         {
             animator.SetBool("isWalking", false);
+            AudioManager.instance.Stop("PlayerWalk");
         }
         else
         {
             animator.SetBool("isWalking", true);
+            AudioManager.instance.Play("PlayerWalk");
         }
 
         if(direction.x > 0 && !isFacingRight)
@@ -95,6 +97,7 @@ public class BulletController : MonoBehaviour
     private IEnumerator PerformDash(Vector2 direction, float duration = 0.5f)
     {
         isDashing = true;
+        AudioManager.instance.Play("PlayerDash");
         afterImage.enabled = true;
         float timer = 0;
 

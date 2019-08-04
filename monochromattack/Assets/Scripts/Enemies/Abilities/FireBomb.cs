@@ -31,6 +31,7 @@ public class FireBomb : MonoBehaviour, Ability
         }
         enemy.FaceTargetPosition(targetPosition);
         enemy.SetAnimatorTrigger("Attack");
+        AudioManager.instance.Play("RedFire");
 
         var flyTime = Vector3.Distance(startPosition, targetPosition) / bulletSpeed;
         var timer = 0f;
@@ -55,6 +56,7 @@ public class FireBomb : MonoBehaviour, Ability
 
     private void CreateFirePatch(Vector3 targetPosition)
     {
+        AudioManager.instance.Play("RedImpact");
         Instantiate(firePatchPrefab, targetPosition, Quaternion.identity);
     }
 }

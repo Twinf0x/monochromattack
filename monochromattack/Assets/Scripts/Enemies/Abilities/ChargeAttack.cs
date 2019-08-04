@@ -73,6 +73,7 @@ public class ChargeAttack : MonoBehaviour, Ability
 
         isCharging = false;
         enemy.SetAnimatorBool("isCharging", false);
+        AudioManager.instance.Play("EnemyHitsWall");
         body.velocity = Vector2.zero;
         Instantiate(shockWavePrefab, transform.position + (playerDirection * 0.5f), Quaternion.identity);
         StartCoroutine(CoolDown());

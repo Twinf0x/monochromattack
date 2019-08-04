@@ -80,3 +80,45 @@ MonoBehaviour:
     pitch: 1.33
     loop: 0
     source: {fileID: 0}
+  - name: PlayerWalk
+    clip: {fileID: 8300000, guid: 5a0e9f6f84ff848458cdd8c5a7ea0529, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: PlayerDash
+    clip: {fileID: 8300000, guid: d64fd7df7403db54381835531222e27b, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PurpleFire
+    clip: {fileID: 8300000, guid: 8de5fc469b8bfce4481d6c1f0da990a3, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: RedFire
+    clip: {fileID: 8300000, guid: d57c7c933f19c3146b4ae071058ab1bf, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: RedImpact
+    clip: {fileID: 8300000, guid: d771d0965e2ebd342a6eb075a6c4bbf6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyHitsWall
+    clip: {fileID: 8300000, guid: 91dec2c7a7e430040ab4a4a1524ce6a5, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyDies
+    clip: {fileID: 8300000, guid: c3f42edcf43733c4ea09274bb5167754, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
