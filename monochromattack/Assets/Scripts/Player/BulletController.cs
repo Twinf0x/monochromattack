@@ -7,6 +7,7 @@ public class BulletController : MonoBehaviour
     public float movementSpeed = 5;
     public float dashSpeed = 30;
     public float dashDrag = 7;
+    public float dashCoolDown = 1f;
     public SpriteRenderer sprite;
     public Animator animator;
     public SpriteAfterImage afterImage;
@@ -15,6 +16,7 @@ public class BulletController : MonoBehaviour
     private Rigidbody2D body;
     private Destructable destructable;
     private bool isFacingRight = true;
+    private float timeSinceLastDash;
 
     private void Start()
     {
@@ -23,6 +25,7 @@ public class BulletController : MonoBehaviour
         //destructable.onDeath += () => this.GameOver();
         ColorController.instance.AddSprite(sprite);
         afterImage.enabled = false;
+        timeSinceLastDash = dashCoolDown;
     }
 
     private void OnDestroy() 
@@ -38,13 +41,14 @@ public class BulletController : MonoBehaviour
         }
 
         direction = GetMovementDirection();
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && timeSinceLastDash >= dashCoolDown)
         {
             Dash(direction);
         }
         else
         {
             Move(direction);
+            timeSinceLastDash += Time.deltaTime;
         }
     }
 
@@ -91,6 +95,7 @@ public class BulletController : MonoBehaviour
 
     private void Dash(Vector2 direction)
     {
+        timeSinceLastDash = 0f;
         StartCoroutine(PerformDash(direction));
     }
 

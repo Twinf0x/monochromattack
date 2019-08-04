@@ -113,9 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1717982141771849640}
-  bulletAmount: 2
+  bulletAmount: 4
   bulletSpread: 45
-  bulletSpeed: 4
+  bulletSpeed: 6
   duration: 2
   enemy: {fileID: 3795103072478504708}
 --- !u!114 &-8035661837201521720

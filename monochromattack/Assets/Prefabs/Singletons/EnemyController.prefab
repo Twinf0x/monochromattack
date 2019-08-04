@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac61c21b59cdfa40ab0dc197f6ab495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesInFirstWave: 4
+  enemiesInFirstWave: 6
   minEnemyToPlayerDistance: 5
   maxEnemyToPlayerDistance: 14
   minTimeBetweenSpawns: 1

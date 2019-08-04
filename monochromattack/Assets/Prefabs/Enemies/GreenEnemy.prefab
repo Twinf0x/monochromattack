@@ -158,8 +158,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropTime: 0.25
-  linearSpeed: 5
+  linearSpeed: 8
   arcHeight: 3
+  coolDown: 0.33
   arc:
     serializedVersion: 2
     m_Curve:

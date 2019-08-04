@@ -287,8 +287,8 @@ MonoBehaviour:
   indicator: {fileID: 3007222646339872129}
   firePoint: {fileID: 1717982141771849640}
   chargeSpeed: 8
-  windUpDuration: 1.5
-  coolDownDuration: 1
+  windUpDuration: 0.5
+  coolDownDuration: 0.5
   shockWavePrefab: {fileID: 8516072293079495142, guid: aabdcc5603a77d94c8957f1bdee5874c,
     type: 3}
   enemy: {fileID: 3795103072478504708}
@@ -429,11 +429,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4262038038300567105}
     m_Modifications:
-    - target: {fileID: 939536893065183046, guid: 784908c90224e9e48acb306a2c383f84,
-        type: 3}
-      propertyPath: m_Name
-      value: RollingDust
-      objectReference: {fileID: 0}
     - target: {fileID: 939536893065183045, guid: 784908c90224e9e48acb306a2c383f84,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -488,6 +483,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 939536893065183046, guid: 784908c90224e9e48acb306a2c383f84,
+        type: 3}
+      propertyPath: m_Name
+      value: RollingDust
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 784908c90224e9e48acb306a2c383f84, type: 3}
