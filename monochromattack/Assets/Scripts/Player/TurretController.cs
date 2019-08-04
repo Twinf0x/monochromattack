@@ -81,10 +81,8 @@ public class TurretController : MonoBehaviour
         AudioManager.instance.Play("TurretFire");
         SpawnProjectile(targetPosition);
         TimeController.instance.EndAimSlowMotion();
-
-        yield return new WaitForSeconds(0.5f);
-
         Destroy(gameObject);
+        yield return null;
     }
 
     private void SpawnProjectile(Vector3 targetPosition)

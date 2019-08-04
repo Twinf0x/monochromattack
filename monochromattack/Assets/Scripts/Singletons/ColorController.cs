@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public enum GameColor { White = -1, Red, Yellow, Blue, Orange, Green, Purple }
 
@@ -100,5 +101,11 @@ public class ColorController : MonoBehaviour
         }
 
         EnemyController.instance.ChangeColors();
+    }
+
+    public void RestartGame()
+    {
+        TimeController.instance.RemoveGameOver();
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }

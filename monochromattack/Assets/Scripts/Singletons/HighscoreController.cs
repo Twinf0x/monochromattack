@@ -8,6 +8,7 @@ public class HighscoreController : MonoBehaviour
     public static HighscoreController instance;
 
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI finalScoreText;
     private int score;
 
     private void Awake()
@@ -46,5 +47,12 @@ public class HighscoreController : MonoBehaviour
     public void IncreaseScore()
     {
         score += 1;
+    }
+
+    public void ToFinalScore()
+    {
+        finalScoreText.text = score.ToString();
+        finalScoreText.gameObject.SetActive(true);
+        scoreText.gameObject.SetActive(false);
     }
 }

@@ -144,4 +144,14 @@ public class EnemyController : MonoBehaviour
         SpawnEnemy(position);
     }
     #endregion
+
+    public void DeactivateAllBut(GameObject obj)
+    {
+        var allEnemyObjects = Physics2D.OverlapAreaAll(new Vector2(-9.5f, -7.5f), new Vector2(9.5f, 10f), LayerMask.GetMask("Enemy", "EnemyProjectile"));
+        foreach(var enemyObject in allEnemyObjects)
+        {
+            enemyObject.gameObject.SetActive(false);
+        }
+        obj.SetActive(true);
+    }
 }

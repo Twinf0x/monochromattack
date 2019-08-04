@@ -20,7 +20,7 @@ public class BulletController : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         destructable = GetComponent<Destructable>();
-        destructable.onDeath += () => this.GameOver();
+        //destructable.onDeath += () => this.GameOver();
         ColorController.instance.AddSprite(sprite);
         afterImage.enabled = false;
     }
@@ -123,12 +123,35 @@ public class BulletController : MonoBehaviour
         isDashing = false;
     }
 
-    private void GameOver()
+    public void GameOver(GameObject killer)
     {
         TimeController.instance.SetGameOver();
         AudioManager.instance.Stop("Fight");
         AudioManager.instance.Play("Chill");
         AudioManager.instance.Play("Scratch");
 
+        EnemyController.instance.DeactivateAllBut(killer);
+        GameObject.FindGameObjectsWithTag("Arena")[0].SetActive(false);
+        StartCoroutine(ZoomInOnKiller(killer));
+    }
+
+    private IEnumerator ZoomInOnKiller(GameObject killer, float duration = 1f)
+    {
+        var timer = 0f;
+        var startPosition = Camera.main.transform.position;
+        var targetPosition = killer.transform.position + (Vector3.right * 2f);
+
+        while(timer < duration)
+        {
+            Camera.main.orthographicSize = Mathf.Lerp(8, 3, (timer/duration));
+            var temp = Vector3.Lerp(startPosition, targetPosition, (timer/duration));
+            temp.z = startPosition.z;
+            Camera.main.transform.position = temp;
+
+            timer += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        HighscoreController.instance.ToFinalScore();
     }
 }

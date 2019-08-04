@@ -51,4 +51,10 @@ public class TimeController : MonoBehaviour
         timeModifiers.Add(0);
         UpdateTimeScale();
     }
+
+    public void RemoveGameOver()
+    {
+        timeModifiers.Remove(0);
+        UpdateTimeScale();
+    }
 }

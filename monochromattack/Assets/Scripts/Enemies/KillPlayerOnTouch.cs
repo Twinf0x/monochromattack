@@ -21,7 +21,8 @@ public class KillPlayerOnTouch : MonoBehaviour
                 return;
             }
 
-            destructable.Die();
+            var bulletController = other.gameObject.GetComponent<BulletController>();
+            bulletController.GameOver(this.gameObject);
         }
     }
 }
