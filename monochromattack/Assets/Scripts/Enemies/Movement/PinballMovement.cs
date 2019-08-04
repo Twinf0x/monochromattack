@@ -87,9 +87,4 @@ public class PinballMovement : MonoBehaviour, Movement
 
         direction = Quaternion.AngleAxis(rotationFactor * 90, Vector3.forward) * direction;
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-    }
 }
