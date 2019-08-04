@@ -6,6 +6,7 @@ using UnityEngine;
 public class PinballMovement : MonoBehaviour, Movement
 {
     public float speed = 4f;
+    public Enemy enemy;
     private Vector2 direction;
     private Rigidbody2D body;
 
@@ -31,10 +32,10 @@ public class PinballMovement : MonoBehaviour, Movement
             return;
         }
 
-        bool isCollidingTop = Physics2D.OverlapCircleAll((Vector3.up * 0.5f) + transform.position, 0.25f, LayerMask.GetMask("Wall")).Length > 0;
-        bool isCollidingBottom = Physics2D.OverlapCircleAll((Vector3.down * 0.5f) + transform.position, 0.25f, LayerMask.GetMask("Wall")).Length > 0;
-        bool isCollidingLeft = Physics2D.OverlapCircleAll((Vector3.left * 0.5f) + transform.position, 0.25f, LayerMask.GetMask("Wall")).Length > 0;
-        bool isCollidingRight = Physics2D.OverlapCircleAll((Vector3.right * 0.5f) + transform.position, 0.25f, LayerMask.GetMask("Wall")).Length > 0;
+        bool isCollidingTop = Physics2D.OverlapCircleAll((Vector3.up) + transform.position, 0.25f, LayerMask.GetMask("Wall")).Length > 0;
+        bool isCollidingBottom = Physics2D.OverlapCircleAll((Vector3.down) + transform.position, 0.25f, LayerMask.GetMask("Wall")).Length > 0;
+        bool isCollidingLeft = Physics2D.OverlapCircleAll((Vector3.left) + transform.position, 0.25f, LayerMask.GetMask("Wall")).Length > 0;
+        bool isCollidingRight = Physics2D.OverlapCircleAll((Vector3.right) + transform.position, 0.25f, LayerMask.GetMask("Wall")).Length > 0;
         float rotationFactor = 0f;
         
         if(isCollidingTop)
@@ -86,5 +87,6 @@ public class PinballMovement : MonoBehaviour, Movement
         }
 
         direction = Quaternion.AngleAxis(rotationFactor * 90, Vector3.forward) * direction;
+        enemy.FaceTargetPosition(direction.normalized + (Vector2)transform.position);
     }
 }

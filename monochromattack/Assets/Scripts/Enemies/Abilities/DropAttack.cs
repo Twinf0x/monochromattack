@@ -11,6 +11,8 @@ public class DropAttack : MonoBehaviour, Ability
     public AnimationCurve arc;
     public GameObject shockWavePrefab;
     public Transform dropShadow;
+    public Vector3 dropShadowOffset = new Vector3(0, -1, 0);
+    public Enemy enemy;
 
     public IEnumerator Execute(Action callback)
     {
@@ -28,6 +30,7 @@ public class DropAttack : MonoBehaviour, Ability
         {
             targetPosition = EnemyController.instance.GetRandomPointInArena();
         }
+        enemy.FaceTargetPosition(targetPosition);
 
         killer.isActive = false;
 
@@ -37,7 +40,7 @@ public class DropAttack : MonoBehaviour, Ability
         while(timer <= flyTime)
         {
             var position = Vector3.Lerp(startPosition, targetPosition, (timer/flyTime));
-            dropShadow.position = position;
+            dropShadow.position = position + dropShadowOffset;
             position.y += arc.Evaluate(timer/flyTime) * arcHeight;
             transform.position = position;
 
@@ -56,7 +59,7 @@ public class DropAttack : MonoBehaviour, Ability
             dropPosition.y = height + targetPosition.y;
 
             transform.position = dropPosition;
-            dropShadow.position = targetPosition;
+            dropShadow.position = targetPosition + dropShadowOffset;
 
             timer += Time.deltaTime;
             yield return null;
@@ -76,6 +79,6 @@ public class DropAttack : MonoBehaviour, Ability
 
     private void OnDisable()
     {
-        dropShadow.position = transform.position;
+        dropShadow.position = transform.position + dropShadowOffset;
     }
 }

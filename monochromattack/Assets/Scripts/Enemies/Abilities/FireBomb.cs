@@ -11,6 +11,7 @@ public class FireBomb : MonoBehaviour, Ability
     public float arcHeight = 5f;
     public AnimationCurve arc;
     public GameObject firePatchPrefab;
+    public Enemy enemy;
 
     public IEnumerator Execute(Action callback)
     {
@@ -28,6 +29,7 @@ public class FireBomb : MonoBehaviour, Ability
         {
             targetPosition = EnemyController.instance.GetRandomPointInArena();
         }
+        enemy.FaceTargetPosition(targetPosition);
 
         var flyTime = Vector3.Distance(startPosition, targetPosition) / bulletSpeed;
         var timer = 0f;

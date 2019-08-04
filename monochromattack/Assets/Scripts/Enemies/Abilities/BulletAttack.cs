@@ -10,6 +10,7 @@ public class BulletAttack : MonoBehaviour, Ability
     public float bulletSpread = 45f;
     public float bulletSpeed = 3f;
     public float duration = 1f;
+    public Enemy enemy;
 
     private float currentAngle = 0f;
 
@@ -29,6 +30,7 @@ public class BulletAttack : MonoBehaviour, Ability
             playerDirection = UnityEngine.Random.insideUnitSphere + firePoint.position;
             playerDirection.z = 0;
         }
+        enemy.FaceTargetPosition(playerDirection + transform.position);
 
         RotateFirePoint(playerDirection);
 

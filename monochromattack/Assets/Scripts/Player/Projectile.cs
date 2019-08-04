@@ -35,7 +35,7 @@ public class Projectile : MonoBehaviour
         float degreeAngle = (180 / Mathf.PI) * radialAngle * -1;
 
         //as projectile is facing to the left by default, subtract 90
-        degreeAngle -= 90;
+        //degreeAngle -= 90;
 
         transform.RotateAround(transform.position, new Vector3(0, 0, 1), degreeAngle - currentAngle);
         currentAngle = degreeAngle;

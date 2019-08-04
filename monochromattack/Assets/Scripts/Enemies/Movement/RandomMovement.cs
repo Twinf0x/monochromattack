@@ -7,6 +7,7 @@ public class RandomMovement : MonoBehaviour, Movement
 {
     public float speed = 2f;
     public float duration = 0.5f;
+    public Enemy enemy;
 
     private Rigidbody2D body;
 
@@ -19,6 +20,7 @@ public class RandomMovement : MonoBehaviour, Movement
     {
         var direction = EnemyController.instance.GetRandomPointInArena() - transform.position;
         direction = direction.normalized;
+        enemy.FaceTargetPosition(direction + transform.position);
 
         body.velocity = direction * speed;
 

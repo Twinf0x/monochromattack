@@ -11,6 +11,7 @@ public class ChargeAttack : MonoBehaviour, Ability
     public float windUpDuration = 1.5f;
     public float coolDownDuration = 1f;
     public GameObject shockWavePrefab;
+    public Enemy enemy;
 
     private Action collisionCallback = delegate { };
     private float currentAngle = 0f;
@@ -35,6 +36,7 @@ public class ChargeAttack : MonoBehaviour, Ability
             playerDirection.z = 0;
         }
         playerDirection = playerDirection.normalized;
+        enemy.FaceTargetPosition(playerDirection + transform.position);
 
         RotateFirePoint(playerDirection);
 

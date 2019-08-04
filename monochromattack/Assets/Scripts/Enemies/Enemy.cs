@@ -5,6 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float abilityProbability = 0.5f;
+    public SpriteRenderer sprite;
+    public bool isFacingRight = false;
+    public Animator animator;
     private Movement movement;
     private Ability ability;
     private bool isBusy = false;
@@ -40,5 +43,36 @@ public class Enemy : MonoBehaviour
         {
             StartCoroutine(ability.Execute(() => isBusy = false));
         }
+    }
+
+    public void FaceTargetPosition(Vector3 position)
+    {
+        if(position.x > transform.position.x && !isFacingRight)
+        {
+            Flip();
+        }
+
+        if(position.x < transform.position.x && isFacingRight)
+        {
+            Flip();
+        }
+    }
+
+    private void Flip()
+    {
+        var temp = sprite.gameObject.transform.localScale;
+        temp.x *= -1;
+        sprite.gameObject.transform.localScale = temp;
+        isFacingRight = !isFacingRight;
+    }
+
+    public void SetAnimatorBool(string name, bool value)
+    {
+        animator.SetBool(name, value);
+    }
+
+    public void SetAnimatorTrigger(string name)
+    {
+        animator.SetTrigger(name);
     }
 }
